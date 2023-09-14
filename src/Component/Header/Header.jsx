@@ -16,7 +16,7 @@ const Header = () => {
   const updateSearchValue = React.useCallback(
     debounce((str) => {
       dispatch(setFilter(str));
-    }, 200),
+    }, 400),
     [],
   );
 
