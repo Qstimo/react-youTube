@@ -1,9 +1,30 @@
 import React from 'react';
 import s from './Header.module.scss';
 import MyInput from '../Ui/MyInput/MyInput';
+import debounce from 'lodash.debounce';
 import Theme from '../Theme';
+import { useDispatch, useSelector } from 'react-redux';
+import { selectSearch, setFilter } from '../../redux/slices/filterSlice';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const [value, setValue] = React.useState();
+  const searchValue = useSelector(selectSearch);
+  // const updateSearchValue = (str) => {
+  //   dispatch(setFilter(str));
+  // };
+  const updateSearchValue = React.useCallback(
+    debounce((str) => {
+      dispatch(setFilter(str));
+    }, 200),
+    [],
+  );
+
+  const onChangeInput = (event) => {
+    setValue(event.target.value);
+    updateSearchValue(event.target.value);
+  };
+
   return (
     <div className={s.root}>
       <div className={s.logo}>
@@ -19,7 +40,7 @@ const Header = () => {
         </svg>
         <h1>YouVideos!</h1>
       </div>
-      <MyInput type="text" placeholder="Искать здесь..." />
+      <MyInput value={value} onChange={onChangeInput} type="text" placeholder="Искать здесь..." />
       <Theme />
     </div>
   );
