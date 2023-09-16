@@ -6,7 +6,7 @@
     overflow: hidden;
 }
 
-.thumbWrap iframe {
+.video {
     position: absolute;
     top: 0;
     left: 0;
@@ -50,6 +50,32 @@
     p {
         height: 100px;
         max-width: 390px;
+    }
+
+}
+
+.videoBtn {
+    position: absolute;
+    top: 30%;
+    left: 34%;
+    width: 68px;
+    height: 48px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+
+    svg {
+        fill: white;
+        fill-opacity: 0.6;
+
+
+    }
+
+    &hover {
+        svg {
+            fill: red;
+            fill-opacity: 1;
+        }
     }
 
 }
