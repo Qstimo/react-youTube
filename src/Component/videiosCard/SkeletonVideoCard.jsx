@@ -9,6 +9,7 @@ const SkeletonVideoCard = (props) => (
     viewBox="0 0 400 400"
     backgroundColor="#e6e6e6"
     foregroundColor="#dfd3d3"
+    opacity='1'
     {...props}
   >
     <rect x="0" y="6" rx="20" ry="20" width="390" height="250" /> 

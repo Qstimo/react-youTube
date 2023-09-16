@@ -1,0 +1,90 @@
+.thumbWrap {
+    position: relative;
+    padding-bottom: 56.25%;
+    /* задаёт высоту контейнера для 16:9 (если 4:3 — поставьте 75%) */
+    height: 0;
+    overflow: hidden;
+}
+
+.video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-width: 0;
+    outline-width: 0;
+    border-radius: 20px;
+}
+
+.videoCardNet {
+    padding: 10px;
+    position: relative;
+    text-align: center;
+
+
+    .text {
+        width: 100%;
+        height: 28px;
+    }
+
+    p {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+
+    }
+
+}
+
+.videoCardList {
+
+}
+
+.pucture{
+    .videoImg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-width: 0;
+        outline-width: 0;
+        border-radius: 20px;
+    }
+    .videoBtn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 120px;
+        height: 100px;
+        border: none;
+        background-color: transparent;
+        transform: translate(-50%,-50%);
+        cursor: pointer;
+        outline: none;
+        &:hover,
+        &:focus {
+            .svgBtn {
+                fill: red;
+                fill-opacity: 1;
+            }
+        }
+    
+        .svgBtn {
+            fill: white;
+            fill-opacity: 0.6;
+            
+    
+    
+        }
+    
+      
+    
+    }
+}
+
+ .disabled{
+   display: none;
+  
+}
