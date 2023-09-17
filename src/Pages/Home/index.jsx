@@ -75,7 +75,7 @@ function Home() {
     getDataVideos();
   }, [search]);
 
-  const skeleton = [...new Array(12)].map((i) => <SkeletonVideoCard key={i} />);
+  const skeleton = [...new Array(12)].map((_, i) => <SkeletonVideoCard key={i} />);
   if (status === 'error') {
     return <h1>error</h1>;
   }
