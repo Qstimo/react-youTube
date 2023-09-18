@@ -1,23 +1,26 @@
 import React from 'react';
 import s from './Home.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectSearch } from '../../redux/slices/filterSlice';
+import { selectForm, selectSearch, selectSort } from '../../redux/slices/filterSlice';
 import VideoCard from '../../Component/videiosCard';
 import SkeletonVideoCard from '../../Component/videiosCard/SkeletonVideoCard';
 import { fetchVideos, selectVideosData } from '../../redux/slices/videosSlice';
+import Select from '../../Component/Select';
 
 function Home() {
   const dispatch = useDispatch();
   const { items, status } = useSelector(selectVideosData);
   const [videos, setVideos] = React.useState([]);
-
+  const sort = useSelector(selectSort);
   const getDataVideos = async () => {
     const query = search ? search : '';
     const regionCode = 'RU'; // Код региона, например, RU для России
-    const order = 'relevance'; // Порядок сортировки, например, relevance или date
+    const order = sort.sortProperty; // Порядок сортировки, например, relevance или date
     const maxResults = 12; // Максимальное количество результатов поиска
     dispatch(fetchVideos({ query, regionCode, order, maxResults }));
   };
+
+  const formVideo = useSelector(selectForm);
 
   const search = useSelector(selectSearch);
   // React.useEffect(() => {
@@ -73,16 +76,19 @@ function Home() {
 
   React.useEffect(() => {
     getDataVideos();
-  }, [search]);
+  }, [search, sort, formVideo]);
 
   const skeleton = [...new Array(12)].map((_, i) => <SkeletonVideoCard key={i} />);
   if (status === 'error') {
     return <h1>error</h1>;
   }
   return (
-    <div className={s.content}>
-      {status === 'loading' ? skeleton : <VideoCard videos={items} />}
-    </div>
+    <>
+      <Select />
+      <div className={formVideo ? s.content : s.contentList}>
+        {status === 'loading' ? skeleton : <VideoCard videos={items} />}
+      </div>
+    </>
   );
 }
 
