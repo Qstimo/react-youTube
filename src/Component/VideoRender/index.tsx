@@ -1,8 +1,12 @@
 import React from 'react';
 import s from './VideoRender.module.scss';
+import {Videos} from '../../redux/slices/videosSlice'
 
-function VideoRender({ video }) {
-  const smartTitle = (title) => {
+type VideoRenderProps={
+  video:Videos,
+}
+const VideoRender:React.FC<VideoRenderProps>=( {video} ) =>{
+  const smartTitle = (title:string) => {
     return title.slice(0, 70) + '...';
   };
 
@@ -19,7 +23,7 @@ function VideoRender({ video }) {
           <div className={s.pucture}>
             <picture>
               <source
-                srcset={`https://i.ytimg.com/vi_webp/${video.id.videoId}/maxresdefault.webp`}
+                srcSet={`https://i.ytimg.com/vi_webp/${video.id.videoId}/maxresdefault.webp`}
                 type="image/webp"
               />
               <img
@@ -46,9 +50,9 @@ function VideoRender({ video }) {
             className={s.video}
             src={`https://www.youtube.com/embed/${video.id.videoId}/?autoplay=1`}
             title="YouTube video player"
-            frameborder="0"
+            // frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen="allowfullscreen"></iframe>
+            ></iframe>
         )}
       </div>
 

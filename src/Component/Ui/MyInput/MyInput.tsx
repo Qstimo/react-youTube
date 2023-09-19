@@ -1,9 +1,14 @@
 import React from 'react';
 import s from './MyInput.module.scss';
-const MyInput = ({ ...props }) => {
+
+type MyInputProps={
+
+}
+
+const MyInput:React.FC<any>= ({ ...props }) => {
   return (
     <form className={s.form}>
-      <input {...props} />
+      <input  {...props} />
       <button type="submit"></button>
       <div className={s.icon}>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

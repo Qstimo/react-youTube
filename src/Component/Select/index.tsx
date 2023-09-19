@@ -1,27 +1,28 @@
 import React from 'react';
 import s from './select.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectForm, selectSort, setForm, setSort } from '../../redux/slices/filterSlice';
+import { SortItems, selectSort, setForm, setSort } from '../../redux/slices/filterSlice';
+
+
 
 const list = [
   { name: 'популярности', sortProperty: 'relevance' },
   { name: 'дате', sortProperty: 'date' },
 ];
 
-function Select() {
+const Select:React.FC=() =>{
   const [open, setOpen] = React.useState(false);
   const [openForm, setOpenForm] = React.useState(true);
   const sort = useSelector(selectSort);
   const dispatch = useDispatch();
-  const popupRef = React.useRef();
-  const formVideo = useSelector(selectForm);
+  const popupRef = React.useRef<HTMLDivElement>(null);
 
   React.useEffect(() => {
-    const handleClick = (event) => {
-      // const _event = event as MouseEvent & {
-      //   path:Node[];
-      // }; _
-      if (popupRef.current && !event.composedPath().includes(popupRef.current)) {
+    const handleClick = (event:MouseEvent) => {
+      const _event = event as MouseEvent & {
+        path:Node[];
+      }; 
+      if (popupRef.current && !_event.composedPath().includes(popupRef.current)) {
         setOpen(false);
       }
     };
@@ -29,12 +30,12 @@ function Select() {
     return () => document.body.removeEventListener('click', handleClick);
   }, []);
 
-  const onClickSort = (item) => {
+  const onClickSort = (item:SortItems) => {
     dispatch(setSort(item));
     setOpen(false);
   };
 
-  const onClickFormVideo = (i) => {
+  const onClickFormVideo = (i:boolean) => {
     dispatch(setForm(i));
     setOpenForm(i);
   };

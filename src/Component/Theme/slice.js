@@ -20,6 +20,7 @@ export const themeSlice = createSlice({
     },
 })
 
+export const selectTheme= (state)=> state.theme
 export const { set } = themeSlice.actions
 
 export default themeSlice.reducer

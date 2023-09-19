@@ -3,11 +3,11 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import cn from 'classnames';
 
-import { set } from './slice';
+import { selectTheme, set } from './slice';
 import styles from './index.module.scss';
 
-const Theme = ({ className }) => {
-  const theme = useSelector((state) => state.theme);
+const Theme:React.FC = () => {
+  const theme = useSelector(selectTheme);
   const dispatch = useDispatch();
 
   React.useEffect(() => {
@@ -19,7 +19,7 @@ const Theme = ({ className }) => {
 
   return (
     <div
-      className={cn(className, styles.root, theme === 'dark' ? styles.dark : styles.light)}
+      className={cn( styles.root, theme === 'dark' ? styles.dark : styles.light)}
       onClick={handleChange}
     />
   );

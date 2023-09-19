@@ -1,11 +1,17 @@
 import React from 'react';
-import s from './index.module.scss';
 import VideoRender from '../VideoRender';
+import {Videos} from '../../redux/slices/videosSlice'
 
-const VideoCard = ({ videos }) => {
+
+type VideoCardProps={
+  items:Videos[],
+}
+
+const VideoCard:React.FC<VideoCardProps> = ( {items} ) => {
+
   return (
     <>
-      {videos.map((video) => (
+      {items.map((video) => (
         <VideoRender key={video.id.videoId} video={video} />
       ))}
     </>

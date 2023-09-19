@@ -13,5 +13,8 @@
         display: flex;
 
         @media(max-width:600px) {}
+        &:active{
+            transform: scale(1.01);
+        }
     }
 }
