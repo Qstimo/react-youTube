@@ -5,9 +5,10 @@ import debounce from 'lodash.debounce';
 import Theme from '../Theme';
 import { useDispatch,  } from 'react-redux';
 import { setFilter } from '../../redux/slices/filterSlice';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Header:React.FC=() => {
+  const {pathname}=useLocation();
   const dispatch = useDispatch();
   const [value, setValue] = React.useState('');
 
@@ -22,7 +23,7 @@ const Header:React.FC=() => {
     setValue(event.target.value);
     updateSearchValue(event.target.value);
   };
-
+console.log(pathname)
   return (
     <div className={s.root}>
 <Link to={'/'}>  
@@ -39,7 +40,7 @@ const Header:React.FC=() => {
         </svg>
         <h1>YouVideos!</h1>
       </div></Link>
-      <MyInput value={value} onChange={onChangeInput} type="text" placeholder="Искать здесь..." />
+      {pathname !== '/*' && <MyInput value={value} onChange={onChangeInput} type="text" placeholder="Искать здесь..." />}
       <Theme />
     </div>
   );
