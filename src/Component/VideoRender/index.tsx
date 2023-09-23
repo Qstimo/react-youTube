@@ -1,12 +1,12 @@
 import React from 'react';
 import s from './VideoRender.module.scss';
-import {Videos} from '../../redux/slices/videosSlice'
+import { Videos } from '../../redux/slices/videosSlice'
 
-type VideoRenderProps={
-  video:Videos,
+type VideoRenderProps = {
+  video: Videos,
 }
-const VideoRender:React.FC<VideoRenderProps>=( {video} ) =>{
-  const smartTitle = (title:string) => {
+const VideoRender: React.FC<VideoRenderProps> = ({ video }) => {
+  const smartTitle = (title: string) => {
     return title.slice(0, 70) + '...';
   };
 
@@ -52,7 +52,7 @@ const VideoRender:React.FC<VideoRenderProps>=( {video} ) =>{
             title="YouTube video player"
             // frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            ></iframe>
+          ></iframe>
         )}
       </div>
 
