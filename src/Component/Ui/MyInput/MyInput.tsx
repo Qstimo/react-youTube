@@ -11,7 +11,7 @@ const MyInput: React.FC<MyInputProps> = ({ value, onChange, removeInput }) => {
 
   return (
     <form className={s.form}>
-      <input value={value} type="text" placeholder="Искать здесь..." onChange={onChange} />
+      <input className={s.input} value={value} type="text" placeholder="Искать здесь..." onChange={onChange} />
       <button type="submit"></button>
       <div className={s.icon}>
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

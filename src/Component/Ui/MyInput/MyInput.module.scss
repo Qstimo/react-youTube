@@ -13,7 +13,7 @@
     }
 
 
-    input {
+    .input {
         height: 42px;
         width: 100%;
         padding: 0 64px 0px 5px;
@@ -38,7 +38,7 @@
         }
     }
 
-    input:focus {
+    .input:focus {
         z-index: 1;
         border-bottom: 3px solid black;
 
@@ -50,9 +50,15 @@
 
     }
 
-    input:focus~.icon,
-    input:focus~button {
+    .input:focus~.icon,
+    .input:focus~button,
+    .input:focus~.clear {
         right: 0%;
+        transform: translateX(0);
+    }
+
+    .input:focus~.clear {
+        right: 40px;
         transform: translateX(0);
     }
 
@@ -80,7 +86,7 @@
         top: 0;
         right: 0%;
         cursor: pointer;
-        transition: .4s cubic-bezier(0, 0.8, 0, 1);
+
 
         @media(max-width:600px) {
             right: 50%;
@@ -89,7 +95,7 @@
     }
 
 
-    input:focus~.clear {
+    .clear {
         position: absolute;
         right: 40px;
         width: 25px;
@@ -105,11 +111,13 @@
             opacity: 0.8;
         }
 
+        @media(max-width:600px) {
+            right: 57%;
+            transform: translateX(50%);
+        }
     }
 
-    .clear {
-        display: none;
-    }
+
 
     .none {
         display: none;
