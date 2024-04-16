@@ -14,11 +14,11 @@ jobs:
       - name: Starting Node.js ${{ matrix.node-version}}
         uses: actions/setup-node@v1
         with: 
-         node-version: ${{ matrix.node-version}}
+          node-version: ${{ matrix.node-version}}
       - name: install modules
         run: npm install
       - name: build production
-        run: react-scripts build
+        run: npm run build
       - name: Check out code
         uses: actions/checkout@v2
       - name: Update user scripts
