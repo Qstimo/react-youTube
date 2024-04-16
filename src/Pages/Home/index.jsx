@@ -16,14 +16,7 @@ function Home() {
   const { items, status } = useSelector(selectVideosData);
   const [result, setResult] = React.useState(24);
   const sort = useSelector(selectSort);
-  const getDataVideos = async () => {
-    const query = search ? search : '';
-    const regionCode = 'RU'; // Код региона, например, RU для России
-    const order = sort.sortProperty; // Порядок сортировки, например, relevance или date
-    const maxResults = result; // Максимальное количество результатов поиска
-    const nextPageToken = 1;
-    dispatch(fetchVideos({ query, regionCode, order, maxResults, nextPageToken }));
-  };
+
 
   const { ref, inView } = useInView({
     /* Optional options */
@@ -41,9 +34,17 @@ function Home() {
   const search = useSelector(selectSearch);
 
   React.useEffect(() => {
-    getDataVideos();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search, sort, formVideo, result]);
+      
+    const getDataVideos = async () => {
+      const query = search ? search : '';
+      const regionCode = 'RU'; // Код региона, например, RU для России
+      const order = sort.sortProperty; // Порядок сортировки, например, relevance или date
+      const maxResults = result; // Максимальное количество результатов поиска
+      const nextPageToken = 1;
+      dispatch(fetchVideos({ query, regionCode, order, maxResults, nextPageToken }));
+    };
+      getDataVideos();
+    }, [search, sort, formVideo, result]);
 
   const skeleton = [...new Array(12)].map((_, i) => <SkeletonVideoCard key={i} />);
   if (status === 'error') {
