@@ -10,12 +10,10 @@ import NotFound from '../NotFound';
 import { useInView } from 'react-intersection-observer';
 
 function Home() {
-  const lastElement = React.useRef();
-  const observer = React.useRef();
+
 
   const dispatch = useDispatch();
   const { items, status } = useSelector(selectVideosData);
-  const [videos, setVideos] = React.useState([]);
   const [result, setResult] = React.useState(24);
   const sort = useSelector(selectSort);
   const getDataVideos = async () => {
@@ -44,6 +42,7 @@ function Home() {
 
   React.useEffect(() => {
     getDataVideos();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [search, sort, formVideo, result]);
 
   const skeleton = [...new Array(12)].map((_, i) => <SkeletonVideoCard key={i} />);
@@ -62,4 +61,3 @@ function Home() {
 }
 
 export default Home;
-// `https://youtube.googleapis.com/youtube/v3/search?part=snippet&maxResults=25&q=cats&key=AIzaSyD0r7qUDnou4e9FX-_x2h503aErHcX4wn4`
