@@ -18,6 +18,11 @@ jobs:
       - name: install modules
         run: npm install
       - name: build production
-        run: npm run build
-          - name: Check out code
-      uses: actions/checkout@v2
+        run: react-scripts build
+      - name: Check out code
+        uses: actions/checkout@v2
+      - name: Update user scripts
+        run: |
+          # Add your script to update user scripts here
+          # For example, you can use curl or wget to download the latest scripts from a specific URL
+          # Then, you can copy or move the downloaded scripts to the appropriate folder in the user's browser
