@@ -11,7 +11,7 @@ module.exports = {
             webpackConfig.plugins.push({
                 apply: (compiler) => {
                     compiler.hooks.afterEmit.tap('GenerateVersionFile', (compilation) => {
-                        AutoReloadUtils.generateVersionFile(path.resolve(__dirname, 'public/version.json'));
+                        AutoReloadUtils.generateVersionFile(path.resolve(__dirname, 'build/version.json'));
                     });
                 },
             });
