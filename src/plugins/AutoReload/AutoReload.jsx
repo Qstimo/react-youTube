@@ -20,27 +20,17 @@ const AutoReload = ({  config }) => {
                 setTimer(intervalId);
             }
 
-
         }
     };
 
     const check = async (href) => {
         const version = await getVersion();
 
-        if (lastVersion.BundleVersion !== version.BundleVersion) {
+        if (lastVersion?.BundleVersion !== version.BundleVersion) {
             if (timer) {
                 clearInterval(timer);
                 setTimer(null);
             }
-
-            // if (config.Notification) {
-            //     await vm.$alert(config.NotificationMessage, 'Предупреждение', {
-            //         type: 'warning',
-            //         confirmButtonText: 'OK',
-            //         closeOnClickModal: true,
-            //         closeOnPressEscape: true,
-            //     }).catch(() => {});
-            // }
 
             setLastVersion(await getVersion());
 
@@ -51,6 +41,7 @@ const AutoReload = ({  config }) => {
     const reload = (href) => {
         if (href) {
             window.location.href = href;
+            console.log(href, 'reload')
         } else {
             window.location.reload(true);
         }

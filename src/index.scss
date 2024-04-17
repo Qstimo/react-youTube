@@ -40,7 +40,8 @@ body {
   flex-direction: column;
   flex: 1;
   padding: 20px 40px;
-  background: var(--background-color-App);
+  // background: var(--background-color-App);
+  // background-color: red;
 
   @media(max-width:800px) {
     padding: 10px 10px;
