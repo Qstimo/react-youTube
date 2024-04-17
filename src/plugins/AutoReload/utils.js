@@ -1,6 +1,4 @@
 import axios from 'axios';
-import Version from './Version';
-
 
 export async function getVersion() {
     const versionData = (await axios.get(`version.json?timestamp=${new Date().getTime()}`)).data;
@@ -11,7 +9,3 @@ export async function getVersion() {
     }
 }
 
-
-export function isBoolean(value) {
-    return value === true || value === false || toString.call(value) === '[object Boolean]';
-}

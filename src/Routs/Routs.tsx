@@ -3,11 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import Home from "../Pages/Home";
 import "../App.scss";
 import NotFound from "../Pages/NotFound";
-import AutoReload from "../plugins/AutoReload/AutoReload";
+import AutoReload from "../plugins/AutoReload/index";
 
 const config = {
-  Enabled: true,
-  CheckInterval: 300,
+  enabled: true,
+  checkInterval: 10,
 };
 
 const Routs: React.FC = () => {
