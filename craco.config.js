@@ -1,15 +1,13 @@
 const path = require("path");
 const AutoReloadUtils = require('./src/plugins/AutoReload/versionGenerator');
+
 module.exports = {
-    // ...
     webpack: {
-        alias: { /* ... */ },
-        plugins: {
-            add: [ /* ... */ ],
-            remove: [ /* ... */ ],
-        },
+        // alias: { /* ... */ },
+        // plugins: {
+
+        // },
         configure: (webpackConfig, { env, paths }) => {
-            // Вставляем код сюда
             webpackConfig.plugins.push({
                 apply: (compiler) => {
                     compiler.hooks.afterEmit.tap('GenerateVersionFile', (compilation) => {
@@ -17,7 +15,6 @@ module.exports = {
                     });
                 },
             });
-            // Возвращаем обновленный webpackConfig
             return webpackConfig;
         },
     },
