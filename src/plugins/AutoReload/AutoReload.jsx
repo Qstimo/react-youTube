@@ -1,47 +1,54 @@
-import React, { useState, useEffect } from "react";
-import Config from "./Config";
-import { getVersion } from "./utils";
+import React, { useState, useEffect } from 'react';
+import Config from './Config';
+import { getVersion } from './utils';
 
 const AutoReload = ({ config }) => {
   const [lastVersion, setLastVersion] = useState(null);
   const [timer, setTimer] = useState(null);
 
   const init = async () => {
-    const conf = new Config(config);
+    try {
+      const conf = new Config(config);
 
-    if (conf.Enabled) {
-      const initialVersion = await getVersion();
-      setLastVersion(initialVersion);
+      if (conf.Enabled) {
+        const initialVersion = await getVersion();
+        setLastVersion(initialVersion);
 
-      if (initialVersion && conf.CheckInterval > 0) {
-        const intervalId = setInterval(() => {
-          check();
-        }, conf.CheckInterval * 1000);
-        setTimer(intervalId);
+        if (initialVersion && conf.CheckInterval > 0) {
+          const intervalId = setInterval(() => {
+            check();
+          }, conf.CheckInterval * 1000);
+          setTimer(intervalId);
+        }
       }
+    } catch (error) {
+      console.error("Error initializing AutoReload:", error);
     }
   };
 
-  const check = async (href) => {
-    const version = await getVersion();
-   
-    if (lastVersion && lastVersion.BundleVersion !== version.BundleVersion) {
-        console.log(version.BundleVersion, 'version.BundleVersion')
+  const check = async () => {
+    try {
+      const version = await getVersion();
+      console.log(version.BundleVersion, "version.BundleVersion");
+      if (lastVersion && lastVersion.BundleVersion !== version.BundleVersion) {
         if (timer) {
           clearInterval(timer);
           setTimer(null);
         }
 
         setLastVersion(version);
-        reload(href);
+        reload();
+      }
+    } catch (error) {
+      console.error("Error checking version:", error);
     }
-};
+  };
 
-  const reload = (href) => {
-    if (href) {
-      window.location.href = href;
-    } else {
+  const reload = () => {
+    try {
       window.location.reload(true);
+    } catch (error) {
+      console.error("Error reloading the page:", error);
     }
   };
 
