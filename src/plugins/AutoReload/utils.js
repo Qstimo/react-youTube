@@ -1,10 +1,7 @@
 import axios from 'axios';
 import Version from './Version';
 
-/**
- * получить версию сборки
- * @return {Version} версия сборки
- */
+
 export async function getVersion() {
     const versionData = (await axios.get(`version.json?timestamp=${new Date().getTime()}`)).data;
     if (versionData) {
@@ -14,11 +11,7 @@ export async function getVersion() {
     }
 }
 
-/**
- * проверить, что значение является булевым
- * @param {any} value значение
- * @return {Boolean} результат
- */
+
 export function isBoolean(value) {
     return value === true || value === false || toString.call(value) === '[object Boolean]';
 }

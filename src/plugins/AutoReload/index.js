@@ -1,22 +1,21 @@
-////////////////////////////////////////////////////////////////
-// плагин автоматического обновления
-////////////////////////////////////////////////////////////////
+// import React, { useEffect } from 'react';
+// import AutoReload from './AutoReload';
 
-import AutoReload from '.';
+// const AutoReloadModule = (options) => {
+//     useEffect(() => {
+//         const module = new AutoReload(options);
+//         module.init();
 
-const AutoReloadModule = {
-    /**
-     * установить плагин
-     * @param {Object} Vue экземпляр Vue
-     * @param {Object} options настройки
-     */
-    install(Vue, options) {
-        const module = new AutoReload(options);
-        module.init();
+//         // Можно сохранить модуль в состоянии, если понадобится
+//         // useState для этого.
+//         // const [autoReloadInstance, setAutoReloadInstance] = useState(module);
 
-        // запоминаем ссылку на модуль плагина, это нужно для демострации работы плагина
-        Vue.prototype.$autoReload = module;
-    },
-};
+//         // В React нет прототипов, поэтому сохраняем экземпляр в контексте или как реф
+//         // Для доступа к нему из других компонентов.
 
-export default AutoReloadModule;
+//     }, [options]);
+
+//     return null; 
+// };
+
+// export default AutoReloadModule;
