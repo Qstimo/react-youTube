@@ -13,6 +13,7 @@ const AutoReload = ({ config }) => {
       if (conf.Enabled) {
         const initialVersion = await getVersion();
         setLastVersion(initialVersion);
+        localStorage.setItem('version', initialVersion.BundleVersion) 
 
         if (initialVersion && conf.CheckInterval > 0) {
           const intervalId = setInterval(() => {
@@ -29,8 +30,8 @@ const AutoReload = ({ config }) => {
   const check = async () => {
     try {
       const version = await getVersion();
-      console.log(version.BundleVersion, "version.BundleVersion");
-      if (lastVersion && lastVersion.BundleVersion !== version.BundleVersion) {
+      const lastVersion = await localStorage.getItem('version')
+      if (lastVersion && lastVersion !== version.BundleVersion) {
         if (timer) {
           clearInterval(timer);
           setTimer(null);
@@ -45,11 +46,7 @@ const AutoReload = ({ config }) => {
   };
 
   const reload = () => {
-    try {
       window.location.reload(true);
-    } catch (error) {
-      console.error("Error reloading the page:", error);
-    }
   };
 
   useEffect(() => {
