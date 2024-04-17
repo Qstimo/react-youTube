@@ -9,7 +9,7 @@ const config = {
   // модуль включен
   Enabled: true,
   // ежеминутное обновление
-  CheckInterval: 60,
+  CheckInterval: 10,
 };
 
 const Routs: React.FC = () => {
