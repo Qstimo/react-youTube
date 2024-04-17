@@ -6,10 +6,8 @@ import NotFound from "../Pages/NotFound";
 import AutoReload from "../plugins/AutoReload/AutoReload";
 
 const config = {
-  // модуль включен
   Enabled: true,
-  // ежеминутное обновление
-  CheckInterval: 10,
+  CheckInterval: 300,
 };
 
 const Routs: React.FC = () => {
