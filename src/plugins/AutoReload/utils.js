@@ -7,7 +7,7 @@ export async function getVersion() {
     if (versionData) {
         return new Version(versionData);
     } else {
-        console.error('Не удалось получить информацию о версии сборки фронта');
+        console.error('Не удалось получить информацию о версии сборки');
     }
 }
 

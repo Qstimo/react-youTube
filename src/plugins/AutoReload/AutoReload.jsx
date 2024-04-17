@@ -17,6 +17,7 @@ const AutoReload = ({  config }) => {
                 const intervalId = setInterval(() => {
                     check();
                 }, conf.CheckInterval * 1000);
+                console.log(intervalId)
                 setTimer(intervalId);
             }
 
